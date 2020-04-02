@@ -130,4 +130,5 @@ dmypy.json
 
 # pycharm
 .idea/
-checkpoint
+checkpoint/*.*
+images/
