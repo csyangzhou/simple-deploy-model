@@ -1,6 +1,8 @@
 # simple-deploy-model
 simple deploy model
 
-目录结构:
-* requirement.txt: 文件声明依赖
-    
+## Prerequisites
+* python3.7
+* flask
+* opencv
+* PIL

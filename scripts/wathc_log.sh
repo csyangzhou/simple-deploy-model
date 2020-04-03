@@ -1,0 +1,1 @@
+tail -fn 50 nohup.out

@@ -4,6 +4,7 @@ from PIL import Image
 import cv2
 import numpy as np
 import torch
+from torchvision import transforms
 
 import main
 import global_var
@@ -54,15 +55,19 @@ def process_image(img_base64_str):
     new_image[0:512, 0:512] = img
     new_image = torch.from_numpy(new_image)
     new_image = new_image.permute(2, 0, 1).float().unsqueeze(dim=0)
-    return new_image
+    return new_image, scale
 
 
 if __name__ == "__main__":
-    global_var.model = main.load_model("../checkpoint/efficientdet(2).pt", False)
+    global_var.model = main.load_model("../checkpoint/efficientdet.pt", False)
     img_base64_str = img_base64('../images/shape_test/36001.jpg')
     img = process_image(img_base64_str)
     with torch.no_grad():
         boxes = global_var.model(img)
+    if boxes.shape[0] > 0:
+        for box_id in range(boxes.shape[0]):
+            xmin, ymin, xmax, ymax = boxes[box_id, :]
+
     print(boxes.size())
 
 

@@ -1,0 +1,1 @@
+nohup python main.py --ip="192.168.1.88" --port=6666 &

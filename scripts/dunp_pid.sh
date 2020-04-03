@@ -1,1 +1,0 @@
-ps aux|grep re_img_CPU.py
